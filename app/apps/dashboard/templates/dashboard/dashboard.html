@@ -1,0 +1,104 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <h1 class="title">Dashboard</h1>
+
+    <div class="columns is-multiline">
+        <div class="column is-12">
+            <h2 class="subtitle">Most worked on projects</h2>
+        </div>
+
+        {% for project in projects %}
+        <div class="column is-2">
+            <div class="card card-link">
+                <div class="card-content">
+                    <div class="media">
+                        <div class="media-content">
+                            <p class="title is-4">{{ project.name }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <footer class="card-footer has-text-centered has-background-{{ project.color }}" id="project-color"></footer>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <br><br>
+
+    <div class="column is-12">
+        <h2 class="subtitle">Latest tasks</h2>
+    </div>
+    {% for task in tasks %}
+    <article class="media is-6">
+
+        <div class="media-left">
+            <span class="icon has-text-{{ task.priority.color }} check-task">
+                <i class="far fa-check-circle fa-lg"></i>
+            </span>
+        </div>
+
+        <div class="media-content">
+            <div class="content level">
+                <div class="level-left">
+                    {{ task.content }}
+                </div>
+                <div class="level-right">
+                                <div class="media-right">
+            <span class="icon has-text-dark">
+              <i class="fas fa-times-circle"></i>
+            </span>
+                    <span class="icon has-text-dark">
+              <i class="fas fa-edit"></i>
+            </span>
+                    <span class="icon has-text-dark">
+              <i class="far fa-calendar-plus"></i>
+            </span>
+        </div>
+                </div>
+            </div>
+
+            <nav class="level is-mobile">
+                <div class="level-left">
+
+                        {% for label in task.labels %}
+                            <a class="level-item">
+                                <span class="tag is-{{ label.color }}">{{ label.name }} </span>
+                            </a>
+                        {% endfor %}
+
+                </div>
+
+                <div class="level-right">
+                    <div class="level-item">
+                        {% if task.date %}
+                        <a href="#" class="card-footer-item has-text-success">
+                                    <span class="icon">
+                                        <i class="far fa-calendar"></i>
+                                    </span>
+                            <p>{% if task.time %}{{ task.time|time:'H:i' }}{% endif %}</p>
+                        </a>
+                        {% endif %}
+                    </div>
+
+                    <div class="level-item">
+                        {% if task.project %}
+                            <p>{{ task.project.name }}</p>
+                            <span class="icon has-text-{{ task.project.color }}">
+                                <i class="fas fa-square"></i>
+                            </span>
+                        {% endif %}
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+
+    </article>
+    {% endfor %}
+</div>
+
+{% endblock %}
