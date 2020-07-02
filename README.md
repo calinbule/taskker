@@ -1,6 +1,6 @@
 # taskker - a Todoist clone realized in Django and Vue.js
 
-## Dependencies:
+## Dependencies
 - Python (developed on 3.7.4)
 - Pip 
 - Node.js (developed on v13.6.0)
@@ -9,7 +9,7 @@
 - grunt-cli 
 
 
-## Install and run:
+## Install and run
 - clone repository: cd <your project directory> && git clone https://github.com/calinbule/taskker.git
 - inside the repository root directory create a virtual environment and activate it: vierualenv venv && source venv/bin/activate
 - install the Python requirements: pip install -r requirements.txt
@@ -20,7 +20,7 @@
 - run the Django development server: python manage.py runserver
 - access the app at http://localhost:8000
   
-## To implement:
+## To implement
 - all tasks view
 - per label view
 - per priority view
