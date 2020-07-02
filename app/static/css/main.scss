@@ -15,3 +15,14 @@
       #project-color {
         height: 10px;
       }
+
+
+      .card {
+        display:flex;
+        flex-direction: column;
+        height: 100%;
+      }
+
+      .card-footer {
+        margin-top: auto;
+      }

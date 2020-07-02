@@ -2,13 +2,27 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
+class LabelColor(models.Model):
+    color = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.color
+
+
+class ProjectColor(models.Model):
+    color = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.color
+
+
 class Project(models.Model):
     TRUE = True
     FALSE = False
     CHOICES_FAV = ((TRUE, 'True'), (FALSE, 'False'))
 
     name = models.CharField(max_length=255)
-    color = models.CharField(max_length=255, default='grey')
+    color = models.ForeignKey(ProjectColor, related_name='projects', on_delete=models.CASCADE)
     favorites = models.BooleanField(choices=CHOICES_FAV, default=FALSE)
 
     created_by = models.ForeignKey(User, related_name='projects', on_delete=models.CASCADE)
@@ -27,7 +41,7 @@ class Label(models.Model):
     CHOICES_FAV = ((TRUE, 'True'), (FALSE, 'False'))
 
     name = models.CharField(max_length=255)
-    color = models.CharField(max_length=255, default='grey')
+    color = models.ForeignKey(LabelColor, related_name='labels', on_delete=models.CASCADE)
     favorites = models.BooleanField(choices=CHOICES_FAV, default=FALSE)
 
     created_by = models.ForeignKey(User, related_name='labels', on_delete=models.CASCADE)
