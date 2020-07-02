@@ -66,6 +66,26 @@
     {% endfor %}
     {% endif %}
 
+    <aside class="menu is-dark">
+        <p class="menu-label">
+            PROJECTS
+        </p>
+        <ul class="menu-list">
+            {% for project in projects %}
+                <li><a href="{% url 'tasks_per_project' project.id %}">{{ project.name }}</a></li>
+            {% endfor %}
+        </ul>
+        <p class="menu-label">
+            LABELS
+        </p>
+        <ul class="menu-list">
+            {% for label in labels %}
+                <li><a href="{% url "tasks_per_label" label.id %}">{{ label.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </aside>
+
+
     {% block content %}
     {% endblock %}
 </section>

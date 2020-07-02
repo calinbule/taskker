@@ -1,37 +1,14 @@
-{% extends 'core/base.html' %}
+{% extends 'core/base_menu.html' %}
 
 {% block content %}
 
 <div class="container">
-    <h1 class="title">Dashboard</h1>
-
-    <div class="columns is-multiline">
-        <div class="column is-12">
-            <h2 class="subtitle">Most worked on projects</h2>
-        </div>
-        {% for project in projects %}
-            <div class="column is-2">
-                <a href="{% url 'tasks_per_project' project.id %}">
-                    <div class="card card-link">
-                        <div class="card-content">
-                            <div class="media">
-                                <div class="media-content">
-                                    <p class="title is-4">{{ project.name }}</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <footer class="card-footer has-text-centered has-background-{{ project.color }}" id="project-color"></footer>
-                    </div>
-                </a>
-            </div>
-        {% endfor %}
-    </div>
+    <h1 class="title">Label: {{ label }}</h1>
 
     <br><br>
 
     <div class="column is-12">
-        <h2 class="subtitle">Latest tasks</h2>
+        <h2 class="subtitle">Tasks</h2>
     </div>
     {% for task in tasks %}
     <article class="media is-6">
@@ -67,7 +44,7 @@
 
                         {% for label in task.label.all %}
                             <a class="level-item">
-                                <span class="tag {{ label.color.color }}">{{ label.name }} </span>
+                                <span class="tag {{ label.color }}">{{ label.name }} </span>
                             </a>
                         {% endfor %}
 

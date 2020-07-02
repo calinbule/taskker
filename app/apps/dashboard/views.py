@@ -17,10 +17,6 @@ def dashboard(request):
     today = date.today()
     tomorrow = date.today() + datetime.timedelta(days=1)
 
-    for task in tasks:
-        task.priority_str = str(task.priority)
-        task.labels = task.label.all()
-
     context = {'tasks': tasks, 'projects': projects}
     return render(request, 'dashboard/dashboard.html', context)
 

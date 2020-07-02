@@ -6,6 +6,11 @@
 
       #main-section {
         flex: 1;
+        display: flex;
+      }
+
+      .hero {
+        flex-grow: 1;
       }
 
       .check-task {
@@ -15,7 +20,6 @@
       #project-color {
         height: 10px;
       }
-
 
       .card {
         display:flex;

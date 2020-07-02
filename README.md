@@ -21,8 +21,6 @@
 - access the app at http://localhost:8000
   
 ## To implement
-- all tasks view
-- per label view
 - per priority view
 - add task
 - edit task

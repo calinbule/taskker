@@ -1,4 +1,4 @@
-{% extends 'core/base.html' %}
+{% extends 'core/base_menu.html' %}
 
 {% block content %}
 
@@ -8,7 +8,7 @@
     <br><br>
 
     <div class="column is-12">
-        <h2 class="subtitle">Latest tasks</h2>
+        <h2 class="subtitle">Tasks</h2>
     </div>
     {% for task in tasks %}
     <article class="media is-6">
@@ -42,9 +42,9 @@
             <nav class="level is-mobile">
                 <div class="level-left">
 
-                        {% for label in task.labels %}
+                        {% for label in task.label.all %}
                             <a class="level-item">
-                                <span class="tag {{ label.color.color }}">{{ label.name }} </span>
+                                <span class="tag {{ label.color }}">{{ label.name }} </span>
                             </a>
                         {% endfor %}
 
