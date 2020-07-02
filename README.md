@@ -44,3 +44,7 @@
 - notifications
 - add more options to settings menu
 - search functionality
+- reminders
+- dark mode
+- compact todos
+- add interactivity (jQuery)
