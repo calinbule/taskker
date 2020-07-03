@@ -55,8 +55,14 @@ class Label(models.Model):
 
 
 class Priority(models.Model):
-    name = models.CharField(max_length=255)
-    color = models.CharField(max_length=255, default='grey')
+    P1 = "p1"
+    P2 = "p2"
+    P3 = "p3"
+    NO_PRIORITY = "no priority"
+    CHOICES_PRIORITY = ((P1, 'p1'), (P2, 'p2'), (P3, 'p3'), (NO_PRIORITY, 'No priority'))
+
+    name = models.CharField(max_length=255, choices=CHOICES_PRIORITY)
+    color = models.CharField(max_length=255, default='black')
 
     class Meta:
         verbose_name_plural = 'Priorities'
@@ -70,7 +76,8 @@ class Task(models.Model):
     date = models.DateField(null=True, blank=True)
     time = models.TimeField(null=True, blank=True)
     project = models.ForeignKey(Project, related_name='tasks', null=True, blank=True, on_delete=models.CASCADE)
-    priority = models.ForeignKey(Priority, related_name='tasks', null=True, blank=True, on_delete=models.CASCADE)
+    #todo find out why it does not initialize tasks with default value
+    priority = models.ForeignKey(Priority, related_name='tasks', null=True, blank=True, on_delete=models.CASCADE, default=Priority.NO_PRIORITY)
     label = models.ManyToManyField(Label, blank=True)
 
     created_by = models.ForeignKey(User, related_name='tasks', on_delete=models.CASCADE)

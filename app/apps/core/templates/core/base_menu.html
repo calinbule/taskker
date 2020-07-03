@@ -66,7 +66,7 @@
     {% endfor %}
     {% endif %}
 
-    <aside class="menu is-dark">
+    <aside class="menu">
         <p class="menu-label">
             PROJECTS
         </p>
@@ -75,12 +75,22 @@
                 <li><a href="{% url 'tasks_per_project' project.id %}">{{ project.name }}</a></li>
             {% endfor %}
         </ul>
+
         <p class="menu-label">
             LABELS
         </p>
         <ul class="menu-list">
             {% for label in labels %}
                 <li><a href="{% url "tasks_per_label" label.id %}">{{ label.name }}</a></li>
+            {% endfor %}
+        </ul>
+
+        <p class="menu-label">
+            PRIORITY
+        </p>
+        <ul class="menu-list">
+            {% for priority in priorities %}
+                <li><a href="{% url "tasks_per_priority" priority.id %}">{{ priority.name }}</a></li>
             {% endfor %}
         </ul>
     </aside>
