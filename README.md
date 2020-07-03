@@ -21,7 +21,6 @@
 - access the app at http://localhost:8000
   
 ## To implement
-- per priority view
 - add task
 - edit task
 - check task
@@ -36,15 +35,21 @@
 - edit label
 - delete label
 - all labels view
+
 - inbox (non scheduled tasks)
 - today view
 - upcoming view
-- filters
-- lateral menu bar with projects, labels, filters
-- notifications
+
 - add more options to settings menu
 - search functionality
 - reminders
 - dark mode
 - compact todos
 - add interactivity (jQuery)
+- tests
+
+- filters ???
+
+# Todo
+- find out why tasks are not initialized with default value
+- change tasks.html template to be utilized by all list views (build values to be printed - current project, priority, label) inside the views
